@@ -4,6 +4,8 @@ import {
   HttpHeaders,
   HttpParams
 } from "@angular/common/http";
+import { EmployeeService } from './employee.service';
+import { Employee } from './employee';
 
 @Component({
   selector: 'app-root',
@@ -13,27 +15,32 @@ import {
 })
 export class AppComponent {
   apiRoot: string = "https://httpbin.org";
+  employees : any;
+  employees1 : Employee[] | undefined;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private _employeeService : EmployeeService) {
+
+  }
 
   doGET() {
-    console.log("GET");
-    let url = `https://localhost:44325/api/Employee`;
-    const httpOptions = {
-      params: new HttpParams().set("foo", "moo").set("limit", "25")
-    };
-    this.http.get(url, httpOptions).subscribe(res => console.log(res));
+    this._employeeService.doGET().subscribe(
+      i => {
+        console.log("--------------------");
+        console.log(i);
+        this.employees = i;
+      }
+    );
   }
 
   doPOST() {
-    console.log("POST");
-    let url = `${this.apiRoot}/post`;
-    const httpOptions = {
-      params: new HttpParams().set("foo", "moo").set("limit", "25")
-    };
-    this.http
-      .post(url, { moo: "foo", goo: "loo" }, httpOptions)
-      .subscribe(res => console.log(res));
+    this._employeeService.Getallusers().subscribe(
+      i => {
+        console.log("--------------------");
+        console.log(i);
+        this.employees1 = i;
+
+      }
+    );
   }
 
   doPUT() {

@@ -20,3 +20,45 @@
   	<button class="btn btn-danger" (click)="doGETWithHeaders()">With Headers</button>
 	</div>
 </div>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let student of employees'>
+            <td>{{student.ID}}</td>
+            <td>{{student.FirstName}}</td>
+            <td>{{student.LastName}}</td>
+            <td>{{student.Gender}}</td>
+            <td>{{student.Salary}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let student of employees1'>
+            <td>{{student.ID}}</td>
+            <td>{{student.FirstName}}</td>
+            <td>{{student.LastName}}</td>
+            <td>{{student.Gender}}</td>
+            <td>{{student.Salary}}</td>
+        </tr>
+    </tbody>
+</table>
